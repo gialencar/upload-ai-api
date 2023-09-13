@@ -1,9 +1,9 @@
 import fastify from 'fastify';
+import { getAllPromptsRoute } from './routes/get-all-prompts';
 
+const PORT = Number(process.env.PORT) || 3333;
 const app = fastify({ logger: true });
 
-app.get('/', () => {
-  return { hello: 'world' };
-});
+app.register(getAllPromptsRoute);
 
-app.listen({ port: 3333 });
+app.listen({ port: PORT });
